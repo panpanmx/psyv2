@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campus Psy Agent</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Campus Psy Agent</p>
+          <h1>心理支持 Agent 工作台</h1>
+        </div>
+        <p class="boundary">仅用于风险筛查、支持建议和求助引导，不替代专业诊断或治疗。</p>
+      </header>
+
+      <section id="errorBanner" class="error-banner" hidden></section>
+
+      <section class="workspace" aria-label="Agent workbench">
+        <section class="panel chat-panel" aria-labelledby="chatTitle">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Conversation</p>
+              <h2 id="chatTitle">对话</h2>
+            </div>
+            <button id="clearButton" class="icon-button" type="button" title="清空当前页面对话">清空</button>
+          </div>
+
+          <form id="identityForm" class="identity-grid">
+            <label>
+              用户 ID
+              <input id="userIdInput" type="text" value="u-demo" autocomplete="off">
+            </label>
+            <label>
+              会话 ID
+              <input id="conversationIdInput" type="text" value="c-demo" autocomplete="off">
+            </label>
+          </form>
+
+          <div id="messageList" class="message-list" aria-live="polite">
+            <article class="message assistant">
+              <span>助手</span>
+              <p>你好，我可以陪你梳理最近的压力、情绪和睡眠情况。你可以从一句真实感受开始。</p>
+            </article>
+          </div>
+
+          <form id="messageForm" class="composer">
+            <label class="sr-only" for="messageInput">输入消息</label>
+            <textarea id="messageInput" rows="3" placeholder="例如：我最近两周考试压力很大，晚上总是睡不着。"></textarea>
+            <button id="sendButton" type="submit">发送</button>
+          </form>
+        </section>
+
+        <aside class="panel status-panel" aria-label="Status panel">
+          <section class="status-section">
+            <div class="panel-header compact">
+              <div>
+                <p class="eyebrow">Risk</p>
+                <h2>风险摘要</h2>
+              </div>
+            </div>
+            <dl id="riskSummary" class="risk-grid">
+              <div><dt>抑郁</dt><dd>unknown</dd></div>
+              <div><dt>焦虑</dt><dd>unknown</dd></div>
+              <div><dt>睡眠</dt><dd>unknown</dd></div>
+              <div><dt>危机</dt><dd>unknown</dd></div>
+              <div><dt>功能受损</dt><dd>unknown</dd></div>
+            </dl>
+          </section>
+
+          <section class="status-section">
+            <h3>建议行动</h3>
+            <ul id="suggestedActions" class="stack-list">
+              <li>发送消息后显示后端建议。</li>
+            </ul>
+          </section>
+
+          <section class="status-section">
+            <h3>追问问题</h3>
+            <ul id="followUpQuestions" class="stack-list">
+              <li>发送消息后显示后端追问。</li>
+            </ul>
+          </section>
+
+          <section class="status-section">
+            <div class="section-title-row">
+              <h3>用户画像</h3>
+              <button id="profileButton" type="button">刷新画像</button>
+            </div>
+            <div id="profilePanel" class="text-panel">暂无画像数据。</div>
+          </section>
+
+          <section class="status-section">
+            <div class="section-title-row">
+              <h3>报告</h3>
+              <button id="reportButton" type="button">生成报告</button>
+            </div>
+            <div id="reportPanel" class="text-panel">暂无报告数据。</div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
